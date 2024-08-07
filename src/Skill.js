@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';  // Importera useRef
 import { useForm } from 'react-hook-form';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -6,6 +6,7 @@ const Skill = () => {
     const [skills, setSkills] = useState([]);
     const [sortType, setSortType] = useState('none');
     const { register, handleSubmit, reset } = useForm();
+    const audioRef = useRef(null);  // Skapa en referens till ljudfilen
 
     const onSubmit = (data) => {
         const newSkill = {
@@ -14,6 +15,7 @@ const Skill = () => {
         };
         setSkills([...skills, newSkill]);
         reset();
+        audioRef.current.play();  // Spela upp ljudet när en ny färdighet läggs till
     };
 
     const sortSkills = (skills, type) => {
@@ -58,6 +60,9 @@ const Skill = () => {
             </div>
 
             <ShowData skills={sortedSkills} />
+
+            {/* swoosh sound */}
+            <audio ref={audioRef} src="Sounds/swoosh1.mp3" />  
         </div>
     );
 };
