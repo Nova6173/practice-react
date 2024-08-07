@@ -6,7 +6,7 @@ const Skill = () => {
     const [skills, setSkills] = useState([]);
     const [sortType, setSortType] = useState('none');
     const { register, handleSubmit, reset } = useForm();
-    const audioRef = useRef(null);  // Skapa en referens till ljudfilen
+    const audioRef = useRef(null);  // Skapar referens till ljudfilen
 
     const onSubmit = (data) => {
         const newSkill = {
