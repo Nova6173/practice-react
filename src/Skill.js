@@ -63,11 +63,17 @@ const Skill = () => {
 };
 
 const ShowData = ({ skills }) => {
+    const colors = ['#ffadad', '#ffd6a5', '#fdffb6', '#caffbf', '#9bf6ff', '#a0c4ff', '#bdb2ff', '#ffc6ff'];
+
     return (
         <ul className="list-group mt-4">
-            {skills.map(skill => (
-                <li key={skill.id} className="list-group-item">
-                    {skill.title}
+            {skills.map((skill, index) => (
+                <li
+                    key={skill.id}
+                    className="list-group-item"
+                    style={{ backgroundColor: colors[index % colors.length] }}
+                >
+                    ★ {skill.title}
                 </li>
             ))}
         </ul>
